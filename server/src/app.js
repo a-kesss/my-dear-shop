@@ -1,29 +1,28 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const apiRouter = require('./routes/api.router');
-const removeHeaderX = require('./middlewares/common');
+
+const registRouter = require('./routes/registration.router');
+const loginRouter = require('./routes/login.router');
+
+// const authenticateToken = require('./middleware/authenticateToken');
 
 const app = express();
 
 const corsConfig = {
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5175',
-    'http://127.0.0.1:5173',
-    'https://www.google.com/',
-  ],
-  credintials: true,
+  origin: ['http://localhost:5173'],
+  credentials: true,
 };
 
 app.use(cors(corsConfig));
-
-app.use(removeHeaderX);
+app.use(express.json());
 
 app.use(morgan('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/v1', apiRouter);
+// http://localhost:3000 + /api
+app.use('/', registRouter);
+app.use('/', loginRouter);
+
 
 module.exports = app;

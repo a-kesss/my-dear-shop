@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env ./src/app.js --ext js,jsx"
+    "dev": "nodemon --env-file=.env ./src/server.js --ext js,jsx"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.6",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }
