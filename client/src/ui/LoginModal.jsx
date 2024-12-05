@@ -14,8 +14,16 @@ function LoginModal() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      login(token);
+    const savedUser = localStorage.getItem('user');
+    if (token && savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        login(user);
+      } catch (error) {
+        console.error('Error parsing saved user:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
     }
   }, [login]);
 
@@ -38,6 +46,7 @@ function LoginModal() {
       const { success, token, user } = response.data;
       if (success === true) {
         localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         login(user);
         handleClose();
       } else if (success === false) {

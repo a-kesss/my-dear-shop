@@ -12,6 +12,7 @@ function RegistrationModal() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
   const changeHandler = (event) => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
@@ -117,11 +118,7 @@ function RegistrationModal() {
           <Button variant="secondary" onClick={handleClose}>
             Отмена
           </Button>
-          <Button
-            variant="primary"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
+          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
             {loading ? 'Загрузка...' : 'Войти'}
           </Button>
         </Modal.Footer>

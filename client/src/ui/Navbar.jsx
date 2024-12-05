@@ -10,7 +10,6 @@ import { useUser } from '../UserContext';
 function NavBar() {
   const { user, isAuthenticated, logout } = useUser();
 
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -44,7 +43,9 @@ function NavBar() {
                 title={user?.username || 'Пользователь'}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="/">В разработке</NavDropdown.Item>
+                <NavDropdown.Item as={RouterNavLink} to="/profile">
+                  Профиль
+                </NavDropdown.Item>
                 <NavDropdown.Item href="/">В разработке</NavDropdown.Item>
                 <NavDropdown.Item href="/">В разработке</NavDropdown.Item>
                 <NavDropdown.Divider />

@@ -14,8 +14,11 @@ export function UserProvider({ children }) {
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
+    localStorage.removeItem('user');
     localStorage.removeItem('token');
+    window.location.href = '/';
   };
+
   return (
     <UserContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}

@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const registRouter = require('./routes/registration.router');
 const loginRouter = require('./routes/login.router');
+const deleteRouter = require('./routes/delete.router');
 
 // const authenticateToken = require('./middleware/authenticateToken');
 
@@ -23,6 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 // http://localhost:3000 + /api
 app.use('/', registRouter);
 app.use('/', loginRouter);
-
+app.use('/', deleteRouter);
 
 module.exports = app;

@@ -9,6 +9,7 @@ registRouter.post('/registration', async (req, res) => {
   const { username, password, email } = req.body;
   const { SECRET_KEY } = process.env;
 
+
   try {
     // Проверка на заполненность полей
     if (!username || !password || !email) {
