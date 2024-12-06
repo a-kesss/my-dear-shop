@@ -1,14 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function ProductCards({ price, title, imgSrc }) {
+function ProductCards({ char }) {
   return (
-    <Card style={{ width: '26rem', margin: '10px' }}>
-      <Card.Img style={{ margin: '3px' }} variant="top" src={imgSrc} />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
-        <Button variant="primary">Добавить</Button>
+    <Card style={{ width: '26rem', height: '700px', marginTop: '20px' }}>
+      <Card.Img variant="top" src={char.images} />
+      <Card.Body style={{ overflow: 'hidden' }}>
+        <Card.Title>{char.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{char.price}$</Card.Subtitle>
+        <Card.Text>{char.description}</Card.Text>
       </Card.Body>
     </Card>
   );
