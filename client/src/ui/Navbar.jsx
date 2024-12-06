@@ -43,11 +43,10 @@ function NavBar() {
                 title={user?.username || 'Пользователь'}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item as={RouterNavLink} to="/profile">
+                <NavDropdown.Item as={RouterNavLink} to="/profileredact">
                   Профиль
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/">В разработке</NavDropdown.Item>
-                <NavDropdown.Item href="/">В разработке</NavDropdown.Item>
+                <NavDropdown.Item href="/">Избраное</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   onClick={() => {

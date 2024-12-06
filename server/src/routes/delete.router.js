@@ -1,11 +1,9 @@
-const { User } = require('../../db/models');
 const deleteRouter = require('express').Router();
+const { User } = require('../../db/models');
 
 deleteRouter.delete('/delete', async (req, res) => {
   const { id } = req.body;
-
-  console.log(req.body);
-  
+  console.log(id);
 
   try {
     const user = await User.findByPk(id);

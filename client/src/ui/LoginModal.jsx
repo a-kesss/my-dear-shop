@@ -42,7 +42,6 @@ function LoginModal() {
     }
     try {
       const response = await axiosInstance.post('/login', inputs);
-      console.log(response.data);
       const { success, token, user } = response.data;
       if (success === true) {
         localStorage.setItem('token', token);

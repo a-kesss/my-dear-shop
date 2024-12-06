@@ -12,7 +12,6 @@ function RegistrationModal() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
   const changeHandler = (event) => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
@@ -32,6 +31,7 @@ function RegistrationModal() {
       const { success, token, user } = response.data;
       if (success === true) {
         localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         login(user);
       }
       handleClose();
