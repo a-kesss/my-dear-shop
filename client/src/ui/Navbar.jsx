@@ -35,7 +35,7 @@ function NavBar() {
               as={RouterNavLink}
               to="/"
             >
-              Главная
+              Home
             </Nav.Link>
             {isAuthenticated ? (
               <NavDropdown
@@ -43,7 +43,7 @@ function NavBar() {
                 title={user?.username || 'Пользователь'}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item as={RouterNavLink} to="/profileredact">
+                <NavDropdown.Item as={RouterNavLink} to="/profile">
                   Профиль
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/">Избраное</NavDropdown.Item>

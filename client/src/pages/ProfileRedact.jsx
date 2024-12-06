@@ -1,4 +1,4 @@
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { Container, Form, Button, Alert, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import axiosInstance from '../axiosinstance';
 
@@ -60,7 +60,8 @@ function ProfileRedact() {
     <Container className="mt-5">
       {showAlert && <Alert variant="success">Профиль успешно удален</Alert>}
       {showAccess && <Alert variant="success">Профиль успешно обновлён</Alert>}
-      <Form>
+      <Modal.Title>Редактирование профиля</Modal.Title>
+      <Form style={{ marginTop: '20px' }}>
         <Form.Group controlId="formBasicName">
           <Form.Label>Имя</Form.Label>
           <Form.Control
@@ -69,6 +70,7 @@ function ProfileRedact() {
             value={formData.username}
             onChange={changeHandler}
             required
+            className="w-25"
           />
         </Form.Group>
 
@@ -80,7 +82,12 @@ function ProfileRedact() {
             value={formData.email}
             onChange={changeHandler}
             required
+            className="w-25"
+            isInvalid={formData.email.length < 0}
           />
+          <Form.Control.Feedback type="invalid">
+            Электронная почта обязательна для заполнения
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -91,14 +98,21 @@ function ProfileRedact() {
             value={formData.password}
             onChange={changeHandler}
             required
+            className="w-25"
+            isInvalid={formData.password.length < 6 && formData.password.length > 0}
           />
+          <Form.Control.Feedback type="invalid">
+            Пароль должен быть не менее 6 символов
+          </Form.Control.Feedback>
         </Form.Group>
+
         <Form.Group>
           <Button
             variant="primary"
             style={{ marginTop: '10px' }}
             onClick={handleSubmit}
             type="submit"
+            disabled={showAlert}
           >
             Сохранить изменения
           </Button>
